@@ -12866,7 +12866,7 @@ function npc_loop() {
 				[-0.8, 0.8],
 			];
 			var multiplier = npc.steps;
-			
+
 			if (def.aura && G.maps[npc.map].ref.transporter && distance(npc, G.maps[npc.map].ref.transporter) < 2000) {
 				delay = -2400;
 				multiplier *= 4;
@@ -12878,9 +12878,10 @@ function npc_loop() {
 			}
 
 			var multiplier_roll = Math.random();
-			if (multiplier_roll < 0.51) { // 51% of the time, the NPC will move farther than normal.
+			// 51% of the time, the NPC will move farther than normal.
+			if (multiplier_roll < 0.51) {
 				multiplier *= 2;
-				if (multiplier_roll < 0.21) { 
+				if (multiplier_roll < 0.21) {
 					multiplier *= 2;
 				}
 			}
