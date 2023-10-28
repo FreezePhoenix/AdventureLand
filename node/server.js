@@ -12866,7 +12866,7 @@ function npc_loop() {
 				[-0.8, 0.8],
 			];
 			var multiplier = npc.steps;
-			shuffle(moves);
+			
 			if (def.aura && G.maps[npc.map].ref.transporter && distance(npc, G.maps[npc.map].ref.transporter) < 2000) {
 				delay = -2400;
 				multiplier *= 4;
@@ -12902,12 +12902,14 @@ function npc_loop() {
 				npc.going_x = (npc.x + target.x) / 2;
 				npc.going_y = (npc.y + target.y) / 2;
 				if (!can_move(npc)) {
-					npc.going_x = npc.x + moves[0][0] * multiplier;
-					npc.going_y = npc.y + moves[0][1] * multiplier;
+					var [move_x, move_y] = moves[Math.floor(Math.random() * moves.length)];
+					npc.going_x = npc.x + move_x * multiplier;
+					npc.going_y = npc.y + move_y * multiplier;
 				}
 			} else {
-				npc.going_x = npc.x + moves[0][0] * multiplier;
-				npc.going_y = npc.y + moves[0][1] * multiplier;
+				var [move_x, move_y] = moves[Math.floor(Math.random() * moves.length)];
+				npc.going_x = npc.x + move_x * multiplier;
+				npc.going_y = npc.y + move_y * multiplier;
 			}
 			npc.d_multiplier = 1 + 2 * Math.random();
 
