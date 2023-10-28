@@ -2895,9 +2895,6 @@ function commence_attack(attacker, target, atype) {
 	} else if (atype == "cburst") {
 		var mp_cutoff = attacker.next_mp;
 		var mp = attacker.next_mp;
-		if (atype == "cburst") {
-			mp = mp_cutoff = attacker.next_mp;
-		}
 		if (attacker.mp < mp_cutoff) {
 			attacker.socket.emit("game_response", { response: "no_mp" });
 			return { failed: true, reason: "no_mp", place: atype, id: target.id };
