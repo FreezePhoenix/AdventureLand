@@ -3383,12 +3383,14 @@ function magiport_someone(pulled, player) {
 	if (!spot) {
 		return false;
 	}
-	pulled.s.magiport = { ms: 400 };
-	pulled.s.magiport.x = spot.x;
-	pulled.s.magiport.y = spot.y;
-	pulled.s.magiport.f = player.name;
-	pulled.s.magiport.in = player.in;
-	pulled.s.magiport.map = player.map;
+	pulled.s.magiport = {
+		ms: 400,
+		x: spot.x,
+		y: spot.y,
+		f: player.name,
+		in: player.in,
+		map: player.map,
+	};
 	if (player.party == pulled.party) {
 		player.pdps += 2000;
 	}
