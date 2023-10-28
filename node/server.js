@@ -12876,10 +12876,13 @@ function npc_loop() {
 			if (!npc.citizen || npc.moving || npc.last.move > future_ms(delay) || instances[npc.in].paused) {
 				continue;
 			}
-			if (Math.random() < 0.3) {
+
+			var multiplier_roll = Math.random();
+			if (multiplier_roll < 0.51) { // 51% of the time, the NPC will move farther than normal.
 				multiplier *= 2;
-			} else if (Math.random() < 0.3) {
-				multiplier *= 4;
+				if (multiplier_roll < 0.21) { 
+					multiplier *= 2;
+				}
 			}
 
 			if (def.heal) {
